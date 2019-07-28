@@ -99,8 +99,8 @@ def main():
     parser.add_argument("--do_eval", action='store_true', help="Whether to run eval on the dev set.")
     parser.add_argument("--output_dir", default=None, type=str, required=True,
                         help="The output directory where the model predictions and checkpoints will be written.")
-    parser.add_argument('--train_dataset', type=str, default='')
-    parser.add_argument('--eval_dataset', type=str, default='')
+    parser.add_argument('--train_dataset', type=str, default='./cloze_test_test__spring2016-cloze_test_ALL_test.csv')
+    parser.add_argument('--eval_dataset', type=str, default='./cloze_test_val__spring2016-cloze_test_ALL_val.csv')
     parser.add_argument('--seed', type=int, default=42)
     parser.add_argument('--num_train_epochs', type=int, default=3)
     parser.add_argument('--train_batch_size', type=int, default=8)
@@ -161,11 +161,6 @@ def main():
     # Load and encode the datasets
     if not args.train_dataset and not args.eval_dataset:
         roc_stories = cached_path(ROCSTORIES_URL)
-        print (roc_stories)
-        args.train_dataset = os.path.join(roc_stories, "cloze_test_val__spring2016 - cloze_test_ALL_val.csv")
-        args.eval_dataset = os.path.join(roc_stories, "cloze_test_test__spring2016 - cloze_test_ALL_test.csv")
-        print (args.train_dataset)
-        print (args.eval_dataset) 
     def tokenize_and_encode(obj):
         """ Tokenize and encode a nested object """
         if isinstance(obj, str):
