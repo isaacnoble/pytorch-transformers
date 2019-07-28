@@ -161,6 +161,11 @@ def main():
     # Load and encode the datasets
     if not args.train_dataset and not args.eval_dataset:
         roc_stories = cached_path(ROCSTORIES_URL)
+        print (roc_stories)
+        args.train_dataset = os.path.join(roc_stories, "cloze_test_val__spring2016 - cloze_test_ALL_val.csv")
+        args.train_dataset = os.path.join(roc_stories, "cloze_test_test__spring2016 - cloze_test_ALL_test.csv")
+        print (args.train_dataset)
+        print (args.train_dataset) 
     def tokenize_and_encode(obj):
         """ Tokenize and encode a nested object """
         if isinstance(obj, str):
