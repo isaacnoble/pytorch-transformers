@@ -56,7 +56,7 @@ def accuracy(out, labels):
 
 def load_rocstories_dataset(dataset_path):
     """ Output a list of tuples(story, 1st continuation, 2nd continuation, label) """
-    with open(dataset_path, encoding='utf_8') as f:
+    with open(dataset_path) as f:
         f = csv.reader(f)
         output = []
         next(f) # skip the first line
@@ -163,9 +163,9 @@ def main():
         roc_stories = cached_path(ROCSTORIES_URL)
         print (roc_stories)
         args.train_dataset = os.path.join(roc_stories, "cloze_test_val__spring2016 - cloze_test_ALL_val.csv")
-        args.train_dataset = os.path.join(roc_stories, "cloze_test_test__spring2016 - cloze_test_ALL_test.csv")
+        args.eval_dataset = os.path.join(roc_stories, "cloze_test_test__spring2016 - cloze_test_ALL_test.csv")
         print (args.train_dataset)
-        print (args.train_dataset) 
+        print (args.eval_dataset) 
     def tokenize_and_encode(obj):
         """ Tokenize and encode a nested object """
         if isinstance(obj, str):
