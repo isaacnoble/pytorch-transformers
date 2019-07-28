@@ -56,7 +56,7 @@ def accuracy(out, labels):
 
 def load_rocstories_dataset(dataset_path):
     """ Output a list of tuples(story, 1st continuation, 2nd continuation, label) """
-    with open(dataset_path) as f:
+    with open(dataset_path, encoding='utf-8') as f:
         f = csv.reader(f)
         output = []
         next(f) # skip the first line
