@@ -154,11 +154,12 @@ def main():
     # These new embeddings will be fine-tuned on the RocStories dataset
     special_tokens = ['_start_', '_delimiter_', '_classify_']
     tokenizer = GPT2Tokenizer.from_pretrained(args.model_name, special_tokens=special_tokens)
+    tokenizer.unk_token = "<UNK>"
     special_tokens_ids = list(tokenizer.convert_tokens_to_ids(token) for token in special_tokens)
     model = GPT2DoubleHeadsModel.from_pretrained(args.model_name, num_special_tokens=len(special_tokens))
     model.to(device)
 
-    tokenizer.unk_token = "?"
+    
 
     # Load and encode the datasets
     if not args.train_dataset and not args.eval_dataset:
