@@ -158,6 +158,8 @@ def main():
     model = GPT2DoubleHeadsModel.from_pretrained(args.model_name, num_special_tokens=len(special_tokens))
     model.to(device)
 
+    tokenizer.unk_token = "?"
+
     # Load and encode the datasets
     if not args.train_dataset and not args.eval_dataset:
         roc_stories = cached_path(ROCSTORIES_URL)
